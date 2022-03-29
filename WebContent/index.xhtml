@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>Project Name</title>
+	<meta name="author" content="The Author"></meta>
+	<h:outputStylesheet library="css" name="style.css" />
+</h:head>
+<!-- Add 50px padding top to the body for the navbar -->
+<h:body style="padding-top: 50px; padding-bottom: 20px;">
+
+
+	<!-- jumbotron -->
+
+	<b:jumbotron style="padding-top: 50px; ">
+		<h1 style="text-align: center">HOME</h1>
+		<p  style="text-align: center"></p>
+
+	</b:jumbotron>
+
+	
+	<h:form  style="text-align: center"> 
+		<h:button id="home" style="text-align: center" class="btn btn-warning" value="BookStore"  outcome="/bookStore.xhtml"></h:button>
+		<br/><br/>
+		<a id="atrigger" class="btn btn-warning " href="#modal"
+			data-toggle="modal" style="margin-right:10px">Return Book</a>
+		
+		<br/><br/>
+		
+		
+		
+	</h:form>
+	
+	<!-- MODALE START PROCESS -->
+	 
+	<b:modal id="modal" title="start process" styleClass="modalPseudoClass">
+
+		<f:facet name="footer"></f:facet>
+
+		<h:form>
+			<h:outputLabel value="name: " />
+			<h:inputText name="nome" value="#{userInstance.utente}"
+				binding="#{nome}" />
+
+			<h:outputLabel value="name process: " />
+			<h:inputText name="pass" value="#{userInstance.idProcess}"
+				binding="#{idProcess}" />
+				
+			<br />
+			<br />
+		
+				<h:commandButton id="startModal" value="ok"
+				 action="#{dispatcher.start(nome.value, idProcess.value)}" 
+				dismiss="modal"></h:commandButton> 
+		</h:form>
+	</b:modal>
+	
+	
+
+</h:body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jstl/core">
+
+<h:head>
+	<title>Choose Action</title>
+	
+	
+</h:head>
+<!-- Add 50px padding top to the body for the navbar -->
+<h:body style="padding-top: 50px; padding-bottom: 20px;">
+
+
+	<!-- jumbotron -->
+
+	<b:jumbotron style="padding-top: 50px; ">
+		<h1 style="text-align: center">check details</h1>
+		<p  style="text-align: center"></p>
+		
+			<h:form  style="text-align: center">
+		 
+		
+		
+		
+		
+		 
+			<h:commandButton  style="text-align: center" class="btn btn-warning" value="save" action="#{dispatcher.completeTask()}"></h:commandButton>
+			<br/><br/>
+			<h:commandButton  style="text-align: center" class="btn btn-success" value="update" action="home" ></h:commandButton>
+	</h:form>
+	
+	</b:jumbotron>
+
+	
+
+
+<b:panelGrid colSpans="2,10">
+		
+    	<h:outputLabel value="ISBN:" />
+    	<h:outputLabel value="#{bookStore.isbn}"  binding="#{isbn}"/>
+    	
+    	<h:outputLabel value="titolo:" />
+    	<h:outputLabel value="#{bookStore.titolo}" binding="#{titolo}" />
+    	
+    	<h:outputLabel value="autore:" />
+    	<h:outputLabel value="#{bookStore.autore}"  binding="#{autore}"/>
+    	<h:outputLabel value="anno:" />
+    	<h:outputLabel value="#{bookStore.annoPubblicazione}"  binding="#{anno}" />
+    	
+    	<h:outputLabel value="genere:" />
+    	<h:outputLabel value="#{bookStore.genere}"  binding="#{genere}" />
+    	
+    	
+    	
+   		 
+</b:panelGrid>
+		
+	
+	
+	
+	
+
+	
+
+</h:body>
+</html>

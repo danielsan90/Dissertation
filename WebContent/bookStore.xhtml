@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>Project Name</title>
+	<meta name="author" content="The Author"></meta>
+	
+</h:head>
+<!-- Add 50px padding top to the body for the navbar -->
+<h:body style="padding-top: 50px; padding-bottom: 20px;">
+
+
+	<!-- jumbotron -->
+
+	<b:jumbotron style="padding-top: 50px; ">
+		<h1 style="text-align: center">Book Store</h1>
+		<p style="text-align: center"></p>
+		<h:form style="text-align: center">
+		
+		<a id="atrigger" class="btn btn-warning " href="#start"
+			data-toggle="modal" style="margin-right:10px">Manage Library</a>
+		
+		<h:commandButton style="text-align: center" class="btn btn-success "
+			value="Home" action="index" ></h:commandButton>
+		
+		
+
+
+	</h:form>
+	</b:jumbotron>
+
+
+
+
+	<!-- tabel  -->
+	<h:form>
+		<h:dataTable value="#{bookStore.books}" var="books"  style="margin:auto; text-align:center; border: 1px, solid, black">
+		
+			<h:column style="margin-right:10px; text-align:center; border: 1px, solid, black">
+				<f:facet name="header"  >ISBN</f:facet>    				
+            #{books.isbn}
+         </h:column >
+			<h:column style="margin-right:10px; text-align:center">
+				<f:facet name="header">Titolo</f:facet>
+            #{books.titolo}
+         </h:column >
+			<h:column style="margin-right:10px; text-align:center">
+				<f:facet name="header">Autore</f:facet>
+            #{books.autore}
+         </h:column>
+			<h:column style="margin-right:10px; text-align:center">
+				<f:facet name="header">Anno Pubblicazione</f:facet>
+            #{books.annoPubblicazione}
+         </h:column>
+         
+			<h:column style="margin-right:10px; text-align:center">
+				<f:facet name="header">Genere</f:facet>
+            #{books.genere}
+         </h:column>
+		</h:dataTable>
+	</h:form>
+	
+	
+	<form>
+	</form>
+	<!-- MODALE START PROCESS -->
+  
+	<b:modal id="start" title="start process" styleClass="modalPseudoClass">
+
+		<f:facet name="footer"></f:facet>
+
+		<h:form>
+			<h:outputLabel value="name: " />
+			<h:inputText name="nome" value="#{userInstance.utente}"
+				binding="#{nome}" />
+
+			<h:outputLabel value="name process: " />
+			<h:inputText name="pass" value="#{userInstance.idProcess}"
+				binding="#{idProcess}" />
+			<br />
+			<br />
+			<h:commandButton value="ok"
+				 action="#{dispatcher.start(nome.value, idProcess.value)}" 
+				dismiss="modal"></h:commandButton> 
+				
+				
+		</h:form>
+	</b:modal>
+
+
+</h:body>
+</html>

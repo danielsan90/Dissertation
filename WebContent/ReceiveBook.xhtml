@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>Choose Action</title>
+
+
+</h:head>
+<!-- Add 50px padding top to the body for the navbar -->
+<h:body style="padding-top: 50px; padding-bottom: 20px;">
+
+
+	<!-- jumbotron -->
+
+	<b:jumbotron style="padding-top: 50px; ">
+		<h1 style="text-align: center">Receive Book</h1>
+		<p style="text-align: center"></p>
+		<h:form style="text-align: center">
+
+
+			<h:commandButton style="text-align: center; margin-right:10px" class="btn btn-success"
+				value="delete book" action="#{dispatcher.completeTask()}"></h:commandButton>
+			<h:commandButton style="text-align: center" class="btn btn-success "
+				value="Home" action="index"></h:commandButton>
+		</h:form>
+	</b:jumbotron>
+	
+
+	
+
+
+</h:body>
+</html>

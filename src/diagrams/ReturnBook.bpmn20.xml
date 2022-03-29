@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
+  <process id="ReturnBook" name="ReturnBook" isExecutable="true">
+    <userTask id="CheckCondition" name="Check conditions book" activiti:assignee="kermit"></userTask>
+    <userTask id="ReceiveBook" name="Receive book"></userTask>
+    <userTask id="ArchiveBook" name="Archive book"></userTask>
+    <endEvent id="endevent4" name="End"></endEvent>
+    <sequenceFlow id="flow23" sourceRef="ArchiveBook" targetRef="endevent4"></sequenceFlow>
+    <parallelGateway id="parallelgateway1" name="Parallel Gateway"></parallelGateway>
+    <sequenceFlow id="flow25" sourceRef="parallelgateway1" targetRef="CheckCondition"></sequenceFlow>
+    <sequenceFlow id="flow26" sourceRef="parallelgateway1" targetRef="ReceiveBook"></sequenceFlow>
+    <parallelGateway id="parallelgateway2" name="Parallel Gateway"></parallelGateway>
+    <sequenceFlow id="flow27" sourceRef="ReceiveBook" targetRef="parallelgateway2"></sequenceFlow>
+    <sequenceFlow id="flow28" sourceRef="CheckCondition" targetRef="parallelgateway2"></sequenceFlow>
+    <sequenceFlow id="flow29" sourceRef="parallelgateway2" targetRef="ArchiveBook"></sequenceFlow>
+    <startEvent id="startevent1" name="Start"></startEvent>
+    <sequenceFlow id="flow30" sourceRef="startevent1" targetRef="parallelgateway1"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_ReturnBook">
+    <bpmndi:BPMNPlane bpmnElement="ReturnBook" id="BPMNPlane_ReturnBook">
+      <bpmndi:BPMNShape bpmnElement="CheckCondition" id="BPMNShape_CheckCondition">
+        <omgdc:Bounds height="61.0" width="105.0" x="370.0" y="280.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="ReceiveBook" id="BPMNShape_ReceiveBook">
+        <omgdc:Bounds height="55.0" width="105.0" x="370.0" y="60.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="ArchiveBook" id="BPMNShape_ArchiveBook">
+        <omgdc:Bounds height="55.0" width="105.0" x="596.0" y="200.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="endevent4" id="BPMNShape_endevent4">
+        <omgdc:Bounds height="35.0" width="35.0" x="740.0" y="210.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="parallelgateway1" id="BPMNShape_parallelgateway1">
+        <omgdc:Bounds height="40.0" width="40.0" x="260.0" y="180.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="parallelgateway2" id="BPMNShape_parallelgateway2">
+        <omgdc:Bounds height="40.0" width="40.0" x="510.0" y="207.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="startevent1" id="BPMNShape_startevent1">
+        <omgdc:Bounds height="35.0" width="35.0" x="155.0" y="183.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow23" id="BPMNEdge_flow23">
+        <omgdi:waypoint x="701.0" y="227.0"></omgdi:waypoint>
+        <omgdi:waypoint x="740.0" y="227.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow25" id="BPMNEdge_flow25">
+        <omgdi:waypoint x="280.0" y="220.0"></omgdi:waypoint>
+        <omgdi:waypoint x="279.0" y="310.0"></omgdi:waypoint>
+        <omgdi:waypoint x="370.0" y="310.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow26" id="BPMNEdge_flow26">
+        <omgdi:waypoint x="280.0" y="180.0"></omgdi:waypoint>
+        <omgdi:waypoint x="279.0" y="87.0"></omgdi:waypoint>
+        <omgdi:waypoint x="370.0" y="87.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow27" id="BPMNEdge_flow27">
+        <omgdi:waypoint x="475.0" y="87.0"></omgdi:waypoint>
+        <omgdi:waypoint x="530.0" y="87.0"></omgdi:waypoint>
+        <omgdi:waypoint x="530.0" y="207.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow28" id="BPMNEdge_flow28">
+        <omgdi:waypoint x="475.0" y="310.0"></omgdi:waypoint>
+        <omgdi:waypoint x="529.0" y="310.0"></omgdi:waypoint>
+        <omgdi:waypoint x="530.0" y="247.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow29" id="BPMNEdge_flow29">
+        <omgdi:waypoint x="550.0" y="227.0"></omgdi:waypoint>
+        <omgdi:waypoint x="596.0" y="227.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow30" id="BPMNEdge_flow30">
+        <omgdi:waypoint x="190.0" y="200.0"></omgdi:waypoint>
+        <omgdi:waypoint x="260.0" y="200.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

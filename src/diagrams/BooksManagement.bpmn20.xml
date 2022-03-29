@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
+  <process id="BooksManagement" name="BooksManagement" isExecutable="true">
+    <startEvent id="startevent1" name="Start"></startEvent>
+    <userTask id="deleteBook" name="Delete Book"></userTask>
+    <userTask id="chooseAction" name="Choose Action"></userTask>
+    <sequenceFlow id="flow1" sourceRef="startevent1" targetRef="chooseAction"></sequenceFlow>
+    <exclusiveGateway id="exclusivegateway1" name="Exclusive Gateway"></exclusiveGateway>
+    <sequenceFlow id="flow2" sourceRef="chooseAction" targetRef="exclusivegateway1"></sequenceFlow>
+    <sequenceFlow id="flow3" sourceRef="exclusivegateway1" targetRef="deleteBook">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${navigation == 1}]]></conditionExpression>
+    </sequenceFlow>
+    <userTask id="checkDetails" name="check details"></userTask>
+    <endEvent id="endevent2" name="End"></endEvent>
+    <sequenceFlow id="flow9" sourceRef="deleteBook" targetRef="endevent2"></sequenceFlow>
+    <endEvent id="endevent3" name="End"></endEvent>
+    <sequenceFlow id="flow17" sourceRef="checkDetails" targetRef="endevent3"></sequenceFlow>
+    <userTask id="insertNewBook" name="User Task"></userTask>
+    <sequenceFlow id="flow18" sourceRef="exclusivegateway1" targetRef="insertNewBook">
+     <conditionExpression xsi:type="tFormalExpression"><![CDATA[${navigation == 2}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="flow19" sourceRef="insertNewBook" targetRef="checkDetails"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_BooksManagement">
+    <bpmndi:BPMNPlane bpmnElement="BooksManagement" id="BPMNPlane_BooksManagement">
+      <bpmndi:BPMNShape bpmnElement="startevent1" id="BPMNShape_startevent1">
+        <omgdc:Bounds height="35.0" width="35.0" x="60.0" y="190.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="deleteBook" id="BPMNShape_deleteBook">
+        <omgdc:Bounds height="55.0" width="105.0" x="350.0" y="290.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="chooseAction" id="BPMNShape_chooseAction">
+        <omgdc:Bounds height="55.0" width="105.0" x="140.0" y="180.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="exclusivegateway1" id="BPMNShape_exclusivegateway1">
+        <omgdc:Bounds height="40.0" width="40.0" x="282.0" y="187.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="checkDetails" id="BPMNShape_checkDetails">
+        <omgdc:Bounds height="55.0" width="105.0" x="500.0" y="80.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="endevent2" id="BPMNShape_endevent2">
+        <omgdc:Bounds height="35.0" width="35.0" x="500.0" y="300.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="endevent3" id="BPMNShape_endevent3">
+        <omgdc:Bounds height="35.0" width="35.0" x="680.0" y="90.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="insertNewBook" id="BPMNShape_insertNewBook">
+        <omgdc:Bounds height="55.0" width="105.0" x="350.0" y="80.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
+        <omgdi:waypoint x="95.0" y="207.0"></omgdi:waypoint>
+        <omgdi:waypoint x="140.0" y="207.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
+        <omgdi:waypoint x="245.0" y="207.0"></omgdi:waypoint>
+        <omgdi:waypoint x="282.0" y="207.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow3" id="BPMNEdge_flow3">
+        <omgdi:waypoint x="302.0" y="227.0"></omgdi:waypoint>
+        <omgdi:waypoint x="303.0" y="317.0"></omgdi:waypoint>
+        <omgdi:waypoint x="350.0" y="317.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow9" id="BPMNEdge_flow9">
+        <omgdi:waypoint x="455.0" y="317.0"></omgdi:waypoint>
+        <omgdi:waypoint x="500.0" y="317.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow17" id="BPMNEdge_flow17">
+        <omgdi:waypoint x="605.0" y="107.0"></omgdi:waypoint>
+        <omgdi:waypoint x="680.0" y="107.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow18" id="BPMNEdge_flow18">
+        <omgdi:waypoint x="302.0" y="187.0"></omgdi:waypoint>
+        <omgdi:waypoint x="301.0" y="107.0"></omgdi:waypoint>
+        <omgdi:waypoint x="350.0" y="107.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow19" id="BPMNEdge_flow19">
+        <omgdi:waypoint x="455.0" y="107.0"></omgdi:waypoint>
+        <omgdi:waypoint x="500.0" y="107.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
